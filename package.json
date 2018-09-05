@@ -1,11 +1,11 @@
 {
-  "name": "monkeys-native",
+  "name": "monkeys-native-toolbox",
   "version": "1.0.0",
-  "description": "",
+  "description": "Toolbox for react native.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Monkeys Team",
-  "license": "ISC"
+  "license": "MIT"
 }
