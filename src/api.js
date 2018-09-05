@@ -2,7 +2,6 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
-
 class Api {
 
   constructor(baseUrl, debug = true, token = null){
@@ -22,7 +21,7 @@ class Api {
     this.TOKEN = token;
   }
 
-  request(path, data, method = 'GET', extras = {}) {
+  async request(path, data, method = 'GET', extras = {}) {
     let options = {
       method,
       headers: DEFAULT_HEADERS
