@@ -68,19 +68,19 @@ class Api {
         switch (response.status) {
           case 200:
             if(this.DEBUG){
-              console.log(`[OK] ${path}: ${_response}`);
+              console.log('[OK] for ' + path + ' => ', _response);
             }
             resolve(_response)
             break;
           case 401:
             if(this.DEBUG){
-              console.log(`[UNAUTHORIZED REQUEST] ${path}: `, _response);
+              console.log('[UNAUTHORIZED REQUEST] for ' + path + ' => ', _response);
             }
             reject(_response);
             break;
           default:
             if(this.DEBUG){
-              console.log(`[ERROR] ${path}: `, _response);
+              console.log('[ERROR] for ' + path + ' => ', _response);
             }
             reject(_response);
             break;
