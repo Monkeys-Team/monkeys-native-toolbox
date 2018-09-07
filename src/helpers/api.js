@@ -4,9 +4,11 @@ const DEFAULT_HEADERS = {
 }
 export class Api {
 
-  constructor(baseUrl, debug = true, token = null){
+  constructor(baseUrl, debug = true, retryCount = 0, retryTimeout = 2000, token = null){
     this.BASE_URL = baseUrl;
     this.DEBUG = debug;
+    this.RETRY_COUNT = retryCount;
+    this.RETRY_TIMEOUT = retryTimeout;
     this.TOKEN = token;
 
     if(this.DEBUG){
@@ -82,7 +84,15 @@ export class Api {
             if(this.DEBUG){
               console.log('[ERROR] for ' + path + ' => ', _response);
             }
-            reject(_response);
+            if(this.RETRY_COUNT > 0){
+              setTimeout(async () => {
+                console.log('[REQUEST RETRYING] for ', url);
+                this.RETRY_COUNT--;
+                await this.request(path, data, method, extras);
+              }, this.RETRY_TIMEOUT);
+            }else{
+              reject(_response);
+            }
             break;
         }
       });
