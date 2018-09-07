@@ -1,6 +1,6 @@
 import { WIDTH, HEIGHT, PIXEL_RATIO } from './statics'; 
 
-export default Normalize = (size) => {
+export const Normalize = (size) => {
   if (PIXEL_RATIO === 2) {
     if (WIDTH < 360) {
       return size * 0.95;

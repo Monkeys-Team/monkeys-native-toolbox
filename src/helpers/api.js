@@ -2,7 +2,7 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
-class Api {
+export class Api {
 
   constructor(baseUrl, debug = true, token = null){
     this.BASE_URL = baseUrl;
@@ -89,5 +89,3 @@ class Api {
     });
   }
 }
-
-export default Api;

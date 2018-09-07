@@ -6,9 +6,9 @@ import {
   Image
 } from 'react-native';
 
-import { WIDTH } from '../helpers';
+import { WIDTH, Normalize } from '../helpers';
 
-export default class Button extends Component {
+export class Button extends Component {
 
   static defaultProps = {
     activeOpacity: 0.9
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   text: {
     alignSelf: 'center',
-    fontSize: 18,
+    fontSize: Normalize(16),
     color: 'white',
     fontWeight: 'bold'
   },
