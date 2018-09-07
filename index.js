@@ -1,2 +1,7 @@
-export { Helpers } from './src/helpers';
-export { Components } from './src/components';
+import * as Helpers from './src/helpers';
+import * as Components from './src/components';
+
+export { 
+  Helpers,
+  Components
+};
