@@ -23,7 +23,7 @@ export class Api {
     this.TOKEN = token;
   }
 
-  async request(path, data, method = 'GET', extras = {}) {
+  async request(path, data, method = 'GET', extras = {retryCount: this.RETRY_COUNT, retryTimeout: this.RETRY_TIMEOUT}) {
     let options = {
       method,
       headers: DEFAULT_HEADERS
@@ -84,12 +84,12 @@ export class Api {
             if(this.DEBUG){
               console.log('[ERROR] for ' + path + ' => ', _response);
             }
-            if(this.RETRY_COUNT > 0){
+            if(extras.retryCount > 0){
               setTimeout(async () => {
                 console.log('[REQUEST RETRYING] for ', url);
-                this.RETRY_COUNT--;
+                extras.retryCount--;
                 await this.request(path, data, method, extras);
-              }, this.RETRY_TIMEOUT);
+              }, extras.retryTimeout);
             }else{
               reject(_response);
             }
