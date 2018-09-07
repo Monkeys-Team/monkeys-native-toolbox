@@ -86,7 +86,9 @@ export class Api {
             }
             if(extras.retryCount > 0){
               setTimeout(async () => {
-                console.log('[REQUEST RETRYING] for ', url);
+                if(this.DEBUG){
+                  console.log('[REQUEST RETRYING] for ', url);
+                }
                 extras.retryCount--;
                 await this.request(path, data, method, extras);
               }, extras.retryTimeout);
