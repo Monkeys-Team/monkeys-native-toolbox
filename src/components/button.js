@@ -6,7 +6,7 @@ import {
   Image
 } from 'react-native';
 
-import { Statics } from '../helpers';
+import { WIDTH } from '../helpers';
 
 export default class Button extends Component {
 
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
-    width: Statics.WIDTH - 40,
+    width: WIDTH - 40,
     height: 50,
   },
   text: {
