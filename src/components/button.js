@@ -9,11 +9,6 @@ import {
 import { WIDTH, Normalize } from '../helpers';
 
 export class Button extends Component {
-
-  static defaultProps = {
-    activeOpacity: 0.9
-  }
-
   render() {
     const { children, containerStyle, textStyle, rightIcon, rightIconStyle, leftIcon, leftIconStyle } = this.props;
     return(

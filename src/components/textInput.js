@@ -7,15 +7,6 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-TextInput.defaultProps = {
-  selectionColor: 'white',
-  placeholderTextColor: '#95a5a6',
-  autoCapitalize: 'none',
-  underlineColorAndroid: 'transparent',
-  autoCorrect: false,
-  allowFontScaling: false,
-}
-
 import { WIDTH, Normalize } from '../helpers';
 
 export class MTextInput extends Component {
@@ -57,11 +48,13 @@ export class MTextInput extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: '#3d3d3d',
+    backgroundColor: 'white',
     width: WIDTH - 40,
     height: 50,
     marginVertical: 5,
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#bdc3c7'
   },
   input: {
     flex: 1,
