@@ -99,7 +99,7 @@ An avatar component to shows user's profile picture.
  * `imageProps` (optional): `Image` props. 
 
 
-## Roadmap
+# Roadmap
 
 ### Components
  - [x] Button
