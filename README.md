@@ -13,6 +13,9 @@ API reference divided by two parts.
   * [Components](https://github.com/melihmucuk/monkeys-native-toolbox#components)
     * [Button](https://github.com/melihmucuk/monkeys-native-toolbox#button-)
     * [MTextInput](https://github.com/melihmucuk/monkeys-native-toolbox#mtextinput-)
+    * [EmailInput](https://github.com/melihmucuk/monkeys-native-toolbox#emailinput-)
+    * [PasswordInput](https://github.com/melihmucuk/monkeys-native-toolbox#passwordinput-)
+    * [Avatar](https://github.com/melihmucuk/monkeys-native-toolbox#avatar-)
 
 ## Components
 
@@ -39,7 +42,7 @@ A button component that accepts left & right icon. All `Button` props are accept
  * `containerStyle` (optional): Style of the button container. It works like `TouchableOpacity` style.
  * `textStyle` (optional): Style of the button text. It works like `Text` style.
 
- ### `<MTextInput />`
+### `<MTextInput />`
 
 A TextInput component that accepts left & right icon with onPress event. All `TextInput` props are accepted.
 
@@ -64,3 +67,33 @@ A TextInput component that accepts left & right icon with onPress event. All `Te
  * `rightIconOnPress` (optional): A function that runs when right icon pressed.
  * `containerStyle` (optional): Style of the input container. It works like `View` style.
  * `inputStyle` (optional): Style of the input. It works like `TextInput` style.
+
+### `<EmailInput />`
+
+A TextInput component for email. Keyboard type is `email-address`. All `TextInput` and [MTextInput](https://github.com/melihmucuk/monkeys-native-toolbox#mtextinput-) props are accepted.
+
+### `<PasswordInput />`
+
+A TextInput component for password. Secure text entry enabled by default. All `TextInput` and [MTextInput](https://github.com/melihmucuk/monkeys-native-toolbox#mtextinput-) props are accepted.
+
+### `<Avatar />`
+
+An avatar component to shows user's profile picture.
+
+**Example**
+```javascript
+<Avatar 
+ source={{uri: 'your image uri'}}
+ size={80}
+/>
+```
+
+**Props**
+
+ * `source` (required): User's profile picture source. It works like `Image` source props.
+ * `size` (optional): Size of avatar component. This value used to resize avatar component's width and height.
+ * `onPress` (optional): A function that runs when avatar pressed.
+ * `containerStyle` (optional): Style of the avatar container. It works like `TouchableOpacity` style.
+ * `imageStyle` (optional): Style of the avatar's image. It works like `Image` style.
+ * `buttonProps` (optional): `TouchableOpacity` props.
+ * `imageProps` (optional): `Image` props. 
