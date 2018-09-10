@@ -97,3 +97,26 @@ An avatar component to shows user's profile picture.
  * `imageStyle` (optional): Style of the avatar's image. It works like `Image` style.
  * `buttonProps` (optional): `TouchableOpacity` props.
  * `imageProps` (optional): `Image` props. 
+
+
+## Roadmap
+
+### Components
+ - [x] Button
+ - [x] TextInput
+ - [x] EmailInput
+ - [x] PasswordInput
+ - [x] Avatar
+ - [ ] Loading
+ - [ ] Button Group
+ - [ ] Switch
+ - [ ] Slider 
+ - [ ] NavButton
+ - [ ] Alert
+
+### Helpers
+ - [x] Statics
+ - [x] Normalize
+ - [x] Api
+ - [x] Navigation
+ - [ ] Location
