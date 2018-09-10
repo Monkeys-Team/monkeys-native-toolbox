@@ -120,3 +120,4 @@ An avatar component to shows user's profile picture.
  - [x] Api
  - [x] Navigation
  - [ ] Location
+ - [ ] File Upload
