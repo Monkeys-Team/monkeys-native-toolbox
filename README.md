@@ -18,7 +18,7 @@ API reference divided by two parts.
 
 ### `<Button />`
 
-A button component that accepts left & right icon.
+A button component that accepts left & right icon. All `Button` props are accepted.
 
 **Example**
 ```javascript
@@ -41,7 +41,7 @@ A button component that accepts left & right icon.
 
  ### `<MTextInput />`
 
-A TextInput component that accepts left & right icon with onPress event.
+A TextInput component that accepts left & right icon with onPress event. All `TextInput` props are accepted.
 
 **Example**
 ```javascript
