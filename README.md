@@ -1,5 +1,7 @@
 
 # monkeys-native-toolbox
+[**IMPORTANT**] This toolbox is in under heavy development right now. You should wait until published on npm. The responsibility is yours.
+
 Toolbox for react native. It allows you to build react-native apps faster than before.
 
 # Installation
