@@ -1,7 +1,7 @@
 import { TextInput, TouchableOpacity } from 'react-native';
 
 TextInput.defaultProps = {
-  selectionColor: 'white',
+  selectionColor: '#bdc3c7',
   placeholderTextColor: '#bdc3c7',
   autoCapitalize: 'none',
   underlineColorAndroid: 'transparent',

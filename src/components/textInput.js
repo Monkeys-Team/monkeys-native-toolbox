@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: Normalize(16),
     paddingHorizontal: 10,
-    color: 'white',
+    color: '#3d3d3d',
     borderRadius: 5,
   },
   iconContainer: {

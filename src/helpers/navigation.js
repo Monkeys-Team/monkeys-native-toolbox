@@ -1,3 +1,6 @@
+const WITHOUT_HEADER = {header: null, headerMode: 'none'};
+const MODAL_DEFAULT_STACK_OPTIONS = { mode: 'modal',headerMode: 'none', initialRouteName: 'Root' };
+
 import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
 
 export class Navigation {
@@ -12,9 +15,9 @@ export class Navigation {
   }
 
   createAuthStack = async () => {
-    const { authRoutes, authStackOptions = {} } = this.props;
+    const { authRoutes, authStackOptions = WITHOUT_HEADER } = this.props;
 
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       if(this.authStack) resolve(this.authStack);
 
       try {
@@ -29,7 +32,7 @@ export class Navigation {
   createRootStack = async () => {
     const { rootRoutes, rootStackOptions = {} } = this.props;
 
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       if(this.rootStack) resolve(this.rootStack);
 
       try {
@@ -37,6 +40,24 @@ export class Navigation {
         resolve(this.rootStack);
       } catch (error) {
         reject({ message: 'Error occured while creating root stack', error });
+      }
+    });
+  }
+
+  createModalStack = async () => {
+    const { modalRoutes, modalRoutesOptions = MODAL_DEFAULT_STACK_OPTIONS } = this.props;
+
+    return new Promise(async (resolve, reject) => {
+      if(this.modalStack) resolve(this.modalStack);
+
+      try {
+        const rootStack = await this.createRootStack();
+        modalRoutes['Root'] = rootStack;
+        console.log('modalRoutes => ', modalRoutes);
+        this.modalStack = createStackNavigator(modalRoutes, modalRoutesOptions);
+        resolve(this.modalStack);
+      } catch (error) {
+        reject({ message: 'Error occured while creating modal stack', error });
       }
     });
   }
@@ -50,7 +71,7 @@ export class Navigation {
       try {
         this.navigationStack = createSwitchNavigator({
           Auth: await this.createAuthStack(),
-          App: await this.createRootStack(),
+          App: await this.createModalStack(),
         }, appStackOptions);
         resolve(this.navigationStack);
       } catch (error) {
