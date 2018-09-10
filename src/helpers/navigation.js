@@ -29,13 +29,32 @@ export class Navigation {
     });
   }
 
-  createRootStack = async () => {
-    const { rootRoutes, rootStackOptions = {} } = this.props;
+  createTabStack = async () => {
+    const { tabRoutes, tabStackOptions } = this.props;
 
     return new Promise((resolve, reject) => {
+      if(this.tabStack) resolve(this.tabStack);
+
+      try {
+        this.tabStack = createBottomTabNavigator(tabRoutes, tabStackOptions);
+        resolve(this.tabStack);
+      } catch (error) {
+        reject({ message: 'Error occured while creating tab stack', error });
+      }
+    });
+  }
+
+  createRootStack = async () => {
+    const { rootRoutes, rootStackOptions = {}, tabRoutes } = this.props;
+
+    return new Promise(async (resolve, reject) => {
       if(this.rootStack) resolve(this.rootStack);
 
       try {
+        if(tabRoutes){
+          rootRoutes['Tabs'] = await this.createTabStack();
+        }
+        
         this.rootStack = createStackNavigator(rootRoutes, rootStackOptions);
         resolve(this.rootStack);
       } catch (error) {
