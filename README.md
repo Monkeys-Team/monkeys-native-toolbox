@@ -10,7 +10,7 @@ Toolbox for react native. It allows you to build react-native apps faster than b
 # API Reference
 API reference divided by two parts.
 
-  * Components
+  * [Components](https://github.com/melihmucuk/monkeys-native-toolbox#components)
     * [Button](https://github.com/melihmucuk/monkeys-native-toolbox#button-)
     * [MTextInput](https://github.com/melihmucuk/monkeys-native-toolbox#mtextinput-)
 
