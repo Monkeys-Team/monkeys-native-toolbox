@@ -12,7 +12,7 @@ API reference divided by two parts.
 
 ## Components
 
-`<Button />`
+### `<Button />`
 
 A button component that accepts left & right icon.
 
