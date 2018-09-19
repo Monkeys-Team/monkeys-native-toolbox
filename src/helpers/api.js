@@ -4,19 +4,45 @@ const DEFAULT_HEADERS = {
 }
 export class Api {
 
-  constructor(baseUrl, debug = true, retryCount = 0, retryTimeout = 2000, token = null){
-    this.BASE_URL = baseUrl;
-    this.DEBUG = debug;
-    this.RETRY_COUNT = retryCount;
-    this.RETRY_TIMEOUT = retryTimeout;
-    this.TOKEN = token;
+  constructor(){
+    this.DEBUG = true;
+    this.RETRY_COUNT = 0;
+    this.RETRY_TIMEOUT = 0; // in milliseconds
 
     if(this.DEBUG){
-      console.log(`[API INITIALIZED] ${this.BASE_URL}`);
+      console.log('[API MANAGER INITIALIZED]');
     }
   }
 
-  setToken(token){
+  setDebug(debug){
+    if(this.DEBUG){
+      console.log(`[SET DEBUG] ${debug}`);
+    }
+    this.DEBUG = debug;
+  }
+
+  setBaseUrl(baseUrl){
+    if(this.DEBUG){
+      console.log(`[SET BASE URL] ${baseUrl}`);
+    }
+    this.BASE_URL = baseUrl;
+  }
+
+  setRetryCount(retryCount){
+    if(this.DEBUG){
+      console.log(`[SET RETRY COUNT] ${retryCount}`);
+    }
+    this.RETRY_COUNT = retryCount;
+  }
+
+  setRetryTimeout(retryTimeout){
+    if(this.DEBUG){
+      console.log(`[SET RETRY TIMEOUT] ${retryTimeout}`);
+    }
+    this.RETRY_TIMEOUT = retryTimeout;
+  }
+
+  setToken(token) {
     if(this.DEBUG){
       console.log(`[SET TOKEN] ${token}`);
     }
@@ -101,3 +127,5 @@ export class Api {
     });
   }
 }
+
+export const ApiManager = new Api();

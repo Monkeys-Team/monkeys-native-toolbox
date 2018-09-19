@@ -72,7 +72,6 @@ export class Navigation {
       try {
         const rootStack = await this.createRootStack();
         modalRoutes['Root'] = rootStack;
-        console.log('modalRoutes => ', modalRoutes);
         this.modalStack = createStackNavigator(modalRoutes, modalRoutesOptions);
         resolve(this.modalStack);
       } catch (error) {
