@@ -1,10 +1,27 @@
+import { ONE_HOUR, ONE_MINUTE } from '../helpers';
+
 class Location {
   constructor(){
-    this.location = navigator.geolocation;
+    this.LOCATION = navigator.geolocation;
+    this.TIMEOUT = ONE_MINUTE;
+    this.MAXIMUM_AGE = ONE_HOUR;
+    this.HIGH_ACCURACY = false;
+  }
+
+  setTimeout = (timeout) => {
+    this.TIMEOUT = timeout;
+  }
+
+  setMaximumAge = (maximumAge) => {
+    this.MAXIMUM_AGE = maximumAge;
+  }
+
+  setHighAccuracy = (highAccuracy) => {
+    this.HIGH_ACCURACY = highAccuracy;
   }
 
   askPermission = () => {
-    this.location.requestAuthorization()
+    this.LOCATION.requestAuthorization()
   }
 
   handleLocation = (data, resolve) => {
@@ -15,12 +32,18 @@ class Location {
     reject({error: error.message});
   }
 
-  getCurrentPosition = async (options = {}) => {
+  getCurrentPosition = async (options) => {
+    const _options = {
+      timeout: this.TIMEOUT, 
+      maximumAge: this.MAXIMUM_AGE, 
+      enableHighAccuracy: this.HIGH_ACCURACY
+    };
+    Object.assign(_options, options);
     return new Promise((resolve, reject) => {
-      this.location.getCurrentPosition(
+      this.LOCATION.getCurrentPosition(
         (data) => this.handleLocation(data, resolve), 
         (error) => this.handleError(error, reject), 
-        options
+        _options
       );
     });
   }
