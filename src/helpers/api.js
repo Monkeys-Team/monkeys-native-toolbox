@@ -5,7 +5,7 @@ const DEFAULT_HEADERS = {
 export class Api {
 
   constructor(){
-    this.DEBUG = true;
+    this.DEBUG = __DEV__;
     this.RETRY_COUNT = 0;
     this.RETRY_TIMEOUT = 0; // in milliseconds
 
