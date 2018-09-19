@@ -107,7 +107,8 @@ An avatar component to shows user's profile picture.
  - [x] EmailInput
  - [x] PasswordInput
  - [x] Avatar
- - [ ] Loading
+ - [x] Loading
+ - [ ] Header
  - [ ] Button Group
  - [ ] Switch
  - [ ] Slider 
