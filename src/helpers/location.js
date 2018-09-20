@@ -1,4 +1,4 @@
-import { ONE_HOUR, ONE_MINUTE } from '../helpers';
+import { ONE_HOUR, ONE_MINUTE, HUNDRED_METER } from '../helpers';
 
 class Location {
   constructor(){
@@ -6,6 +6,9 @@ class Location {
     this.TIMEOUT = ONE_MINUTE;
     this.MAXIMUM_AGE = ONE_HOUR;
     this.HIGH_ACCURACY = false;
+    this.DISTANCE_FILTER = HUNDRED_METER;
+    this.POWER_SAVE = false;
+    this.WATCH_IDS = [];
   }
 
   setTimeout = (timeout) => {
@@ -20,6 +23,14 @@ class Location {
     this.HIGH_ACCURACY = highAccuracy;
   }
 
+  setDistanceFilter = (distanceFilter) => {
+    this.DISTANCE_FILTER = distanceFilter;
+  }
+
+  setPowerSave = (powerSave) => {
+    this.POWER_SAVE = powerSave;
+  }
+
   askPermission = () => {
     this.LOCATION.requestAuthorization()
   }
@@ -30,6 +41,32 @@ class Location {
 
   handleError = (error, reject) => {
     reject({error: error.message});
+  }
+
+  handleWatch = (data, cb) => {
+    cb(data);
+  }
+
+  watchPosition = async (options, cb) => {
+    const _options = {
+      timeout: this.TIMEOUT, 
+      maximumAge: this.MAXIMUM_AGE, 
+      enableHighAccuracy: this.HIGH_ACCURACY,
+      distanceFilter: this.DISTANCE_FILTER,
+      useSignificantChanges: this.POWER_SAVE,
+    };
+    Object.assign(_options, options);
+    const watchId = this.LOCATION.watchPosition(
+      (data) => this.handleWatch(data, cb), 
+      (error) => this.handleError(error, cb), 
+      _options
+    );
+    this.WATCH_IDS.push(watchId);
+  }
+
+  stopObservingPosition = () => {
+    this.WATCH_IDS.forEach(id => this.LOCATION.clearWatch(id));
+    this.LOCATION.stopObserving();
   }
 
   getCurrentPosition = async (options) => {

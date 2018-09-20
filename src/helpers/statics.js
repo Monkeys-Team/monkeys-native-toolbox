@@ -20,3 +20,9 @@ export const ONE_DAY = 24 * ONE_HOUR;
 export const ONE_WEEK = 7 * ONE_DAY;
 export const ONE_MONTH = 30 * ONE_DAY;
 export const ONE_YEAR = 365 * ONE_DAY;
+
+export const ONE_METER = 1;
+export const TEN_METER = 10 * ONE_METER;
+export const HUNDRED_METER = 10 * TEN_METER;
+export const ONE_KILOMETER = 10 * HUNDRED_METER;
+export const TEN_KILOMETER = 10 * ONE_KILOMETER;
