@@ -108,7 +108,7 @@ An avatar component to shows user's profile picture.
  - [x] PasswordInput
  - [x] Avatar
  - [x] Loading
- - [ ] Header
+ - [x] Header
  - [ ] Button Group
  - [ ] Switch
  - [ ] Slider 
@@ -120,5 +120,5 @@ An avatar component to shows user's profile picture.
  - [x] Normalize
  - [x] Api
  - [x] Navigation
- - [ ] Location
+ - [x] Location
  - [ ] File Upload
