@@ -90,12 +90,11 @@ const styles = StyleSheet.create({
     height: HEADER_HEIGHT,
     paddingTop: HEADER_PADDING_TOP,
     backgroundColor: 'white',
-    elevation: 2,
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.25,
     shadowColor: 'black',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 1
     },
     elevation: 2,
   },
@@ -112,6 +111,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: Normalize(16),
     fontWeight: '500',
+    color: '#3d3d3d'
   },
   icon: {
     width: 80,
@@ -130,12 +130,14 @@ const styles = StyleSheet.create({
   },
   leftText: {
     fontSize: Normalize(14),
-    marginLeft: 5
+    marginLeft: 5,
+    color: '#3d3d3d'
   },
   leftIcon: {
     width: 30,
     height: 30,
     resizeMode: 'contain',
+    tintColor: '#3d3d3d'
   },
   right: {
     position: 'absolute',
@@ -151,10 +153,12 @@ const styles = StyleSheet.create({
   rightText: {
     fontSize: Normalize(14),
     marginRight: 5,
+    color: '#3d3d3d'
   },
   rightIcon: {
     width: 30,
     height: 30,
     resizeMode: 'contain',
+    tintColor: '#3d3d3d'
   }
 });

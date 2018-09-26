@@ -109,8 +109,8 @@ An avatar component to shows user's profile picture.
  - [x] Avatar
  - [x] Loading
  - [x] Header
- - [ ] Button Group
- - [ ] Switch
+ - [x] Button Group
+ - [x] Switch
  - [ ] Slider 
  - [ ] NavButton
  - [ ] Alert

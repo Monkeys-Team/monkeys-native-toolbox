@@ -5,3 +5,5 @@ export { PasswordInput } from './passwordInput';
 export { Avatar } from './avatar';
 export { Loading } from './loading';
 export { Header } from './header';
+export { ButtonGroup } from './buttonGroup';
+export { Switch } from './switch';
