@@ -103,16 +103,16 @@ An avatar component to shows user's profile picture.
 
 ### Components
  - [x] Button
- - [x] TextInput
- - [x] EmailInput
- - [x] PasswordInput
+ - [x] Text Input
+ - [x] Email Input
+ - [x] Password Input
  - [x] Avatar
  - [x] Loading
  - [x] Header
  - [x] Button Group
  - [x] Switch
  - [ ] Slider 
- - [ ] NavButton
+ - [ ] Nav Button
  - [ ] Alert
 
 ### Helpers

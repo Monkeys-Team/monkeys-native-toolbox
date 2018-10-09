@@ -10,7 +10,11 @@ export const PIXEL_RATIO = PixelRatio.get();
 
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
-export const IS_IPHONEX = !IS_ANDROID && WIDTH === X_WIDTH && HEIGHT === X_HEIGHT;
+const XSMAX_WIDTH = 414;
+const XSMAX_HEIGHT = 896;
+const X_WIDTHS = (WIDTH === X_WIDTH || WIDTH === XSMAX_WIDTH);
+const X_HEIGHTS = (HEIGHT === X_HEIGHT || HEIGHT === XSMAX_HEIGHT);
+export const IS_IPHONEX = !IS_ANDROID && X_WIDTHS && X_HEIGHTS;
 export const IS_ANDROID = Platform.OS === 'android';
 
 export const ONE_SECOND = 1000;
