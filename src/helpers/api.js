@@ -59,6 +59,13 @@ export class Api {
     this.REFRESH_TOKEN = func;
   }
 
+  setLoadingFunc(func){
+    if(this.DEBUG){
+      console.log(`[SET LOADING FUNCTION]`);
+    }
+    this.LOADING_FUNC = func;
+  }
+
   setBucketOptionsForFileUpload(options) {
     if(this.DEBUG){
       console.log('[SET BUCKET OPTIONS FOR FILE UPLOAD] => ', options);
@@ -71,6 +78,12 @@ export class Api {
       console.log(`[SET BUCKET URL PREFIX FOR FILE UPLOAD] ${prefix}`);
     }
     this.BUCKET_URL_PREFIX = prefix;
+  }
+
+  showLoading(bg, status){
+    if(this.LOADING_FUNC && !bg){
+      this.LOADING_FUNC(status);
+    }
   }
 
   async upload(path, prefix, fileType = 'jpeg', method = 'POST', extras = {}) {
@@ -92,7 +105,10 @@ export class Api {
     
     return new Promise(async (resolve, reject) => {
       try {
+        this.showLoading(extras.bg, true);
         const response = await RNS3.put(file, options);
+        this.showLoading(extras.bg, false);
+
         if(response.status !== 201) {
           if(this.DEBUG){
             console.log('[FAILED TO UPLOAD FILE] => ', response);
@@ -155,8 +171,11 @@ export class Api {
     }
     
     return new Promise(async (resolve, reject) => {
+      this.showLoading(extras.bg, true);
       fetch(url, options).then(async response => {
         const _response = await response.json();
+        this.showLoading(extras.bg, false);
+        
         switch (response.status) {
           case 200:
             if(this.DEBUG){
