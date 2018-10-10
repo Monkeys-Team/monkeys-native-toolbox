@@ -2,6 +2,9 @@ const DEFAULT_HEADERS = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
+
+import { RNS3 } from 'react-native-aws3';
+
 export class Api {
 
   constructor(){
@@ -50,7 +53,64 @@ export class Api {
   }
 
   setRefreshToken(func){
+    if(this.DEBUG){
+      console.log(`[SET REFRESH TOKEN FUNCTION]`);
+    }
     this.REFRESH_TOKEN = func;
+  }
+
+  setBucketOptionsForFileUpload(options) {
+    if(this.DEBUG){
+      console.log('[SET BUCKET OPTIONS FOR FILE UPLOAD] => ', options);
+    }
+    this.BUCKET_OPTIONS = options;
+  }
+
+  setBucketUrlPrefix(prefix){
+    if(this.DEBUG){
+      console.log(`[SET BUCKET URL PREFIX FOR FILE UPLOAD] ${prefix}`);
+    }
+    this.BUCKET_URL_PREFIX = prefix;
+  }
+
+  async upload(path, prefix, fileType = 'jpeg', method = 'POST', extras = {}) {
+    const file = {
+      uri: path,
+      name: new Date().getTime().toString() + '.' + fileType,
+      type: fileType
+    }
+
+    let options = {};
+    if(prefix){
+      options = { keyPrefix: prefix + '/' + new Date().getTime() };
+    }
+
+    Object.assign(options, this.BUCKET_OPTIONS);
+    if(this.DEBUG){
+      console.log('[FILE UPLOAD OPTIONS] => ', options);
+    }
+    
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await RNS3.put(file, options);
+        if(response.status !== 201) {
+          if(this.DEBUG){
+            console.log('[FAILED TO UPLOAD FILE] => ', response);
+          }
+          reject(response);
+        }else {
+          if(this.DEBUG){
+            console.log('[FILE UPLOAD SUCCESSFUL] => ', response);
+          }
+          resolve(this.BUCKET_URL_PREFIX + response.body.postResponse.key);
+        }
+      } catch (error) {
+        if(this.DEBUG){
+          console.log('[FAILED TO UPLOAD FILE] => ', error);
+        }
+        reject(error);
+      }
+    });
   }
 
   async request(path, data, method = 'GET', extras = {retryCount: this.RETRY_COUNT, retryTimeout: this.RETRY_TIMEOUT}) {
