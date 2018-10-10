@@ -20,9 +20,10 @@ export class Loading extends Component {
     return(
       <ImageBackground 
         source={image} 
-        style={[styles.container, containerStyle]}
+        style={[styles.imageContainer, containerStyle]}
         imageStyle={[styles.image, imageStyle]}
       >
+        <View style={styles.overlay} />
         <ActivityIndicator size={size} color={color} />
       </ImageBackground>
     )
@@ -53,6 +54,23 @@ const styles = StyleSheet.create({
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
+  imageContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
   image: {
