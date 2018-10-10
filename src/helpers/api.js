@@ -49,6 +49,10 @@ export class Api {
     this.TOKEN = token;
   }
 
+  setRefreshToken(func){
+    this.REFRESH_TOKEN = func;
+  }
+
   async request(path, data, method = 'GET', extras = {retryCount: this.RETRY_COUNT, retryTimeout: this.RETRY_TIMEOUT}) {
     let options = {
       method,
@@ -90,7 +94,7 @@ export class Api {
       console.log('[REQUEST OPTIONS] => ', options);
     }
     
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       fetch(url, options).then(async response => {
         const _response = await response.json();
         switch (response.status) {
@@ -104,7 +108,30 @@ export class Api {
             if(this.DEBUG){
               console.log('[UNAUTHORIZED REQUEST] for ' + path + ' => ', _response);
             }
-            reject(_response);
+            try {
+              if(this.DEBUG){
+                console.log('[REFRESH TOKEN INITIALIZED]');
+              }
+              if(this.REFRESH_TOKEN){
+                await this.REFRESH_TOKEN();
+                try {
+                  const refreshedResponse = await this.request(path, data, method, extras);
+                  resolve(refreshedResponse)
+                } catch (error) {
+                  reject(error);
+                }
+              }else{
+                if(this.DEBUG){
+                  console.log('[PLEASE PROVIDE REFRESH TOKEN FUNCTION TO API MANAGER]');
+                }
+                reject(_response);
+              }
+            } catch (error) {
+              if(this.DEBUG){
+                console.log('[REFRESH TOKEN ERROR] => ', error);
+              }
+              reject({error, response: _response});
+            }
             break;
           default:
             if(this.DEBUG){
