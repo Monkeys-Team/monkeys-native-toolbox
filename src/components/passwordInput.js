@@ -3,10 +3,11 @@ import { MTextInput } from './textInput';
 
 export class PasswordInput extends Component {
   render() {
+    const { placeholder } = this.props;
     return(
       <MTextInput
         {...this.props}
-        placeholder={'Password'}
+        placeholder={ placeholder || 'Password' }
         secureTextEntry
       />
     )
