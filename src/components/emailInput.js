@@ -3,10 +3,11 @@ import { MTextInput } from './textInput';
 
 export class EmailInput extends Component {
   render() {
+    const { placeholder } = this.props;
     return(
       <MTextInput
         {...this.props}
-        placeholder={'Email'}
+        placeholder={ placeholder || 'Email' }
         keyboardType={'email-address'}
       />
     )
