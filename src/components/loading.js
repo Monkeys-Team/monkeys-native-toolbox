@@ -3,7 +3,8 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  ActivityIndicator
+  ActivityIndicator,
+  Text
 } from 'react-native';
 
 import { WIDTH,Normalize } from '../helpers';
@@ -24,10 +25,10 @@ export class Loading extends Component {
         imageStyle={[styles.image, imageStyle]}
       >
         <View style={styles.overlay} />
-        <ActivityIndicator size={size} color={color} />
         <Text style={[styles.backgroundText, textStyle]}>
           { text }
         </Text>
+        <ActivityIndicator size={size} color={color} />
       </ImageBackground>
     )
   }
