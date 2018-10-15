@@ -24,10 +24,10 @@ export class Loading extends Component {
         style={[styles.imageContainer, containerStyle]}
         imageStyle={[styles.image, imageStyle]}
       > 
+        <View style={styles.overlay} />
         <Text style={[styles.backgroundText, textStyle]}>
           { text }
         </Text>
-        <View style={styles.overlay} />
         <ActivityIndicator size={size} color={color} />
       </ImageBackground>
     )
