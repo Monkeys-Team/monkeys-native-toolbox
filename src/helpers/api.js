@@ -86,10 +86,10 @@ export class Api {
     }
   }
 
-  async upload(path, prefix, fileType = 'jpeg', method = 'POST', extras = {}) {
+  async upload(path, prefix, contentType = "jpeg", fileType = 'image/jpeg', extras = {}) {
     const file = {
       uri: path,
-      name: new Date().getTime().toString() + '.' + fileType,
+      name: new Date().getTime().toString() + '.' + contentType,
       type: fileType
     }
 
