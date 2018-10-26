@@ -72,8 +72,9 @@ export class Header extends Component {
   }
 
   render() {
+    const { containerStyle } = this.props
     return(
-      <View style={styles.container}>
+      <View style={[styles.container, containerStyle]}>
         {this.renderLeft()}
         {this.renderMiddle()}
         {this.renderRight()}
