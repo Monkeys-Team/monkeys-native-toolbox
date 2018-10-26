@@ -3,10 +3,11 @@ import {
   StyleSheet,
   View,
   ImageBackground,
-  ActivityIndicator
+  ActivityIndicator,
+  Text
 } from 'react-native';
 
-import { WIDTH } from '../helpers';
+import { WIDTH,Normalize } from '../helpers';
 
 export class Loading extends Component {
 
@@ -16,21 +17,24 @@ export class Loading extends Component {
   }
 
   renderWithBackground = () => {
-    const { image, size, color, containerStyle, imageStyle } = this.props;
+    const { image, size, color, containerStyle, imageStyle, text, textStyle } = this.props;
     return(
       <ImageBackground 
         source={image} 
         style={[styles.imageContainer, containerStyle]}
         imageStyle={[styles.image, imageStyle]}
-      >
+      > 
         <View style={styles.overlay} />
+        <Text style={[styles.backgroundText, textStyle]}>
+          { text }
+        </Text>
         <ActivityIndicator size={size} color={color} />
       </ImageBackground>
     )
   }
 
   render() {
-    const { image, size, color, containerStyle } = this.props;
+    const { image, size, color, containerStyle, isLoading } = this.props;
 
     if(image){
       return this.renderWithBackground()
@@ -77,5 +81,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: WIDTH,
     resizeMode: 'cover',
+  },
+  backgroundText: {
+    alignSelf:'center',
+    fontSize: Normalize(16),
+    color:'black'
   }
 });
