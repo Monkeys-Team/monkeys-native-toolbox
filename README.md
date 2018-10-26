@@ -5,7 +5,7 @@
 Toolbox for react native. It allows you to build react-native apps faster than before.
 
 # Installation
-`npm install melihmucuk/monkeys-native-toolbox --save`
+`npm install monkeys-native-toolbox --save`
 
 # API Reference
 API reference divided by two parts.
