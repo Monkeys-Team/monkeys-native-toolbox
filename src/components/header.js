@@ -28,7 +28,7 @@ export class Header extends Component {
     return(
       <TouchableOpacity style={[styles.left, leftContainerStyle]} onPress={leftOnPress}>
         {leftIcon && <Image source={leftIcon} style={[styles.leftIcon, leftIconStyle]} />}
-        {leftText && <Text style={[styles.leftText, leftTextStyle]}>{leftText}</Text>}
+        {leftText && <Text adjustsFontSizeToFit allowFontScaling numberOfLines={1} style={[styles.leftText, leftTextStyle]}>{leftText}</Text>}
       </TouchableOpacity>
     );
   }
@@ -46,7 +46,7 @@ export class Header extends Component {
 
     return(
       <TouchableOpacity style={[styles.right, rightContainerStyle]} onPress={rightOnPress}>
-        {rightText && <Text style={[styles.rightText, rightTextStyle]}>{rightText}</Text>}
+        {rightText && <Text adjustsFontSizeToFit allowFontScaling numberOfLines={1} style={[styles.rightText, rightTextStyle]}>{rightText}</Text>}
         {rightIcon && <Image source={rightIcon} style={[styles.rightIcon, rightIconStyle]} />}
       </TouchableOpacity>
     );
@@ -66,7 +66,7 @@ export class Header extends Component {
     return(
       <View style={[styles.middle, middleContainerStyle]}>
         {icon && <Image source={icon} style={[styles.icon, iconStyle]} />}
-        {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
+        {title && <Text adjustsFontSizeToFit allowFontScaling numberOfLines={1} style={[styles.title, titleStyle]}>{title}</Text>}
       </View>
     )
   }
