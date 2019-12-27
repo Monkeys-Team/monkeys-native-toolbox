@@ -11,10 +11,20 @@ export class Api {
     this.DEBUG = __DEV__;
     this.RETRY_COUNT = 0;
     this.RETRY_TIMEOUT = 0; // in milliseconds
+    this.ERROR_HANDLER = (error) => { console.log(error) };
+    this.CALL_ERROR_HANLDER = false;
 
     if(this.DEBUG){
       console.log('[API MANAGER INITIALIZED]');
     }
+  }
+
+  setCallErrorHandler(status){
+    this.CALL_ERROR_HANLDER = status;
+  }
+
+  setErrorHandler(handler){
+    this.ERROR_HANDLER = handler;
   }
 
   setDebug(debug){
@@ -215,6 +225,11 @@ export class Api {
           default:
             if(this.DEBUG){
               console.log('[ERROR] for ' + path + ' => ', _response);
+            }
+            if(this.CALL_ERROR_HANLDER){
+              this.ERROR_HANDLER(_response);
+              reject(_response);
+              break;
             }
             if(extras.retryCount > 0){
               setTimeout(async () => {
