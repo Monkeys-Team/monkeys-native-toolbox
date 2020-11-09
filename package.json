@@ -1,6 +1,6 @@
 {
   "name": "monkeys-native-toolbox",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Toolbox for react native.",
   "main": "index.js",
   "scripts": {
