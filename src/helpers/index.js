@@ -3,6 +3,7 @@ export {
   HEIGHT,
   PIXEL_RATIO,
   IS_IPHONEX,
+  IS_IPHONE12,
   IS_ANDROID,
   /*TIMES*/
 
