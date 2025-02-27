@@ -51,7 +51,7 @@ const X_14HEIGHTS = (HEIGHT === X14MAX_HEIGHT || HEIGHT === X13_HEIGHT);
 const X_WIDTHS = (WIDTH === X_WIDTH || WIDTH === XSMAX_WIDTH || WIDTH === X12_WIDTH || WIDTH === X12MAX_WIDTH);
 const X_HEIGHTS = (HEIGHT === X_HEIGHT || HEIGHT === XSMAX_HEIGHT || HEIGHT === X12_HEIGHT || HEIGHT === X12MAX_HEIGHT);
 export const IS_IPHONE12 = !IS_ANDROID && X_12WIDTHS && X_12HEIGHTS;
-export const IS_IPHONEX = !IS_ANDROID && ((X_WIDTHS && X_HEIGHTS) || (X_12WIDTHS && X_12HEIGHTS) || (X_14WIDTHS && X_14HEIGHTS));
+export const IS_IPHONEX = DeviceInfo.hasNotch() || DeviceInfo.hasDynamicIsland();
 export const IS_ANDROID = Platform.OS === 'android';
 
 export const ONE_SECOND = 1000;
